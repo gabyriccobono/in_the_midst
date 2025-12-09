@@ -1,57 +1,69 @@
+// Configuration
+// IMPORTANT: Replace with your OpenWeatherMap API key (free at openweathermap.org/api)
 const WEATHER_API_KEY = 'c25e6231fb9dc36d9005eb3f8491eb0f';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
+// Video URLs - Replace these with your YouTube links or MP4 file paths
+// You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
+    // Morning videos
     morning_sunny: 'videos/forest-sunrise.mp4',
     morning_cloudy: 'videos/cloudy-morning.mp4',
     morning_rainy: 'videos/rainy-morning.mp4',
     morning_snowy: 'videos/snowy-sunrise.mp4',
     
-    afternoon_sunny: 'videos/Sunny-forest.mp4',
-    afternoon_cloudy: 'videos/.mp4',
+    // Afternoon videos
+    afternoon_sunny: 'videos/windy-field.mp4',
+    afternoon_cloudy: 'videos/windy-meadow.mp4',
     afternoon_rainy: 'videos/rainy-day.mp4',
     afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
-
-    evening_sunny: 'videos/windy-meadow.mp4',
+    
+    // Evening videos
+    evening_sunny: 'videos/sunny-forest.mp4',
     evening_cloudy: 'videos/Sunset-Beach.mp4',
-    evening_rainy: 'videos/Sunset-Beach.mp4',
+    evening_rainy: 'videos/rainy-day.mp4',
     evening_snowy: 'videos/snowy-sunset.mp4',
-
+    
+    // Night videos
     night_clear: 'videos/clear-night.mp4',
     night_cloudy: 'videos/cloudy-night.mp4',
-    night_rainy: 'videos/rainy night.mp4',
+    night_rainy: 'videos/rainy-night.mp4',
     night_snowy: 'videos/snowy-night.mp4',
     
+    // Default fallback
     default: 'videos/Sunset-Beach.mp4'
 };
 
+// Messages based on conditions
 const MESSAGES = {
-    morning_sunny: 'Breaking news: sunlight is a free mood enhancer',
-    morning_cloudy: "Perfect day to pretend you're in a romance film, go outside to find love",
-    morning_rainy: 'Even the weather is thinking you should take it easy today',
-    morning_snowy: "The snowflakes won't be captured through your camera, go use your eyes",
+    morning_sunny: 'Reminder that direct sunlight is a natural mood enhancer',
+    morning_cloudy: 'Perfect excuse to go outside and pretend you are in a romantic film',
+    morning_rainy: 'Even the weather thinks you should take it slow today',
+    morning_snowy: "Nothing like the smell of fresh snow",
     
-    afternoon_sunny: "The chaos can wait, the sun won't",
-    afternoon_cloudy: 'Perfect hour for reflection or a dramatic walk',
-    afternoon_rainy: 'It is always acceptable to dance in the rain',
-    afternoon_snowy: 'Go outside and let the cold bully you into feeling alive',
+    afternoon_sunny: 'Perfect moment to go touch some grass',
+    afternoon_cloudy: 'Perfect time for reflection or an afternoon walk',
+    afternoon_rainy: 'It is still acceptable to dance in the rain no matter what anyone else says',
+    afternoon_snowy: "You can't see the snowflakes with your phone, go use your eyes",
     
-    evening_sunny: 'Perfect moment to go touch grass and reboot',
-    evening_cloudy: 'Time to avoid the evening slump and reconnect with nature',
-    evening_rainy: '',
-    evening_snowy: 'If you are mad at the cold,',
+    evening_sunny: "The chaos can wait, the sun won't",
+    evening_cloudy: "Be sad that it's cloudy or be happy that that will bring a beautiful sunset, your choice",
+    evening_rainy: 'Your queue to wind down and focus on the good things in life',
+    evening_snowy: 'Bundle up and go outside, not optional',
     
     night_clear: 'When was the last time you went stargazing?',
-    night_cloudy: 'Can you notice the moon under the clouds? Can you smell the night?',
-    night_rainy: 'Nature is giving you a meditation soundtrack for a reason',
+    night_cloudy: 'Can you see the moon behind the clouds? Can you smell the night?',
+    night_rainy: 'Nature is giving you a free meditation soundtrack for a reason',
     night_snowy: 'Night snow is the closest you will get to time stopping',
     
-    default: "Go check what makes today's sky different than yesterday's"
+    default: "Go see what makes today's sky different than yesterday's"
 };
 
+// State
 let currentLocation = null;
 let currentWeather = null;
 let currentTimeOfDay = null;
+let currentTimezoneOffsetSec = null;
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {
@@ -109,6 +121,7 @@ async function getWeather(lat, lon) {
                 name: data.name,
                 country: data.sys.country
             };
+            currentTimezoneOffsetSec = data.timezone ?? 0; // seconds offset from UTC
             updateContent();
         } else {
             throw new Error('Weather API error');
@@ -121,9 +134,18 @@ async function getWeather(lat, lon) {
     }
 }
 
+// Get a Date object for the location's local time using the timezone offset (seconds)
+function getLocalDate() {
+    if (typeof currentTimezoneOffsetSec === 'number') {
+        return new Date(Date.now() + currentTimezoneOffsetSec * 1000);
+    }
+    return new Date();
+}
+
 // Determine time of day
 function getTimeOfDay() {
-    const hour = new Date().getHours();
+    const localDate = getLocalDate();
+    const hour = localDate.getHours();
     
     if (hour >= 5 && hour < 12) {
         return 'morning';
@@ -196,7 +218,7 @@ function setVideoAndMessage(videoKey, messageKey) {
 
 // Update time display
 function updateTime() {
-    const now = new Date();
+    const now = getLocalDate();
     const timeString = now.toLocaleTimeString('en-US', { 
         hour: '2-digit', 
         minute: '2-digit',
@@ -221,6 +243,7 @@ function updateTime() {
 
 // Format weather for display
 function formatWeather(weatherMain) {
+    const timeOfDay = getTimeOfDay();
     const weatherMap = {
         'Clear': 'Sunny',
         'Clouds': 'Cloudy',
@@ -232,6 +255,9 @@ function formatWeather(weatherMain) {
         'Fog': 'Foggy'
     };
     
+    if (weatherMain === 'Clear' && timeOfDay === 'night') {
+        return 'Clear night';
+    }
     return weatherMap[weatherMain] || weatherMain;
 }
 
