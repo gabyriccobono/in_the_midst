@@ -3,9 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>In the Midst</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    
+    <!-- Video Background -->
+    <div class="video-container">
+        <video id="backgroundVideo" autoplay muted loop playsinline>
+            <source src="" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-overlay"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+        <div class="main-message" id="mainMessage">
+            <h1>Step outside and breathe</h1>
+        </div>
+        <button class="leave-button" id="leaveButton" onclick="leaveWebsite()">
+            Leave this page
+        </button>
+    </div>
+
+    <!-- Info Display -->
+    <div class="info-display" id="infoDisplay">
+        <span id="timeDisplay">--:--</span>
+        <span class="separator">•</span>
+        <span id="cityDisplay">Loading...</span>
+        <span class="separator">•</span>
+        <span id="weatherDisplay">--</span>
+    </div>
+
+    <script src="script.js"></script>
 </body>
 </html>
