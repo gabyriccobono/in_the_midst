@@ -7,31 +7,31 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'https://drive.google.com/file/d/1wGAVXfow-zXFyLKPbxPKSXDi-3SP_cg4/view?usp=drive_link',
-    morning_cloudy: 'https://drive.google.com/file/d/1Z3-2p9KbKw2iPLJi7T3PKG5JSJBrE5vg/view?usp=drive_link',
-    morning_rainy: 'https://drive.google.com/file/d/1noGOtZlgU7d3DGZIQSwzRiMi_hmCXKrK/view?usp=drive_link',
-    morning_snowy: 'https://drive.google.com/file/d/1cGNDZW2r-2hORZ65GzQLXSb2ppM1z2uk/view?usp=sharing',
+    morning_sunny: 'https://drive.google.com/uc?export=download&id=1wGAVXfow-zXFyLKPbxPKSXDi-3SP_cg4',
+    morning_cloudy: 'https://drive.google.com/uc?export=download&id=1Z3-2p9KbKw2iPLJi7T3PKG5JSJBrE5vg',
+    morning_rainy: 'https://drive.google.com/uc?export=download&id=1noGOtZlgU7d3DGZIQSwzRiMi_hmCXKrK',
+    morning_snowy: 'https://drive.google.com/uc?export=download&id=1cGNDZW2r-2hORZ65GzQLXSb2ppM1z2uk',
     
     // Afternoon videos
-    afternoon_sunny: 'https://drive.google.com/file/d/1i00yAH291BF-wVUp6TiBzfV5KTn-uhTo/view?usp=sharing',
-    afternoon_cloudy: 'https://drive.google.com/file/d/1cO_PFfdC5v80JvNBgweTLbsnvoQU3-hm/view?usp=drive_link',
-    afternoon_rainy: 'https://drive.google.com/file/d/1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh/view?usp=drive_link',
-    afternoon_snowy: 'https://drive.google.com/file/d/15VnUL6khqD6xnCY28mFjp_hbpxBLcPW3/view?usp=drive_link',
+    afternoon_sunny: 'https://drive.google.com/uc?export=download&id=1i00yAH291BF-wVUp6TiBzfV5KTn-uhTo',
+    afternoon_cloudy: 'https://drive.google.com/uc?export=download&id=1cO_PFfdC5v80JvNBgweTLbsnvoQU3-hm',
+    afternoon_rainy: 'https://drive.google.com/uc?export=download&id=1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh',
+    afternoon_snowy: 'https://drive.google.com/uc?export=download&id=15VnUL6khqD6xnCY28mFjp_hbpxBLcPW3',
     
     // Evening videos
-    evening_sunny: 'https://drive.google.com/file/d/1NZgtU63BHG6WO8g2Jh_qX2ZrGw3FQwUC/view?usp=drive_link',
-    evening_cloudy: 'https://drive.google.com/file/d/1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx/view?usp=sharing',
-    evening_rainy: 'https://drive.google.com/file/d/1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh/view?usp=sharing',
-    evening_snowy: 'https://drive.google.com/file/d/11VMURVAnxLWm9JY0sgPu60RsC6h1oaZx/view?usp=sharing',
+    evening_sunny: 'https://drive.google.com/uc?export=download&id=1NZgtU63BHG6WO8g2Jh_qX2ZrGw3FQwUC',
+    evening_cloudy: 'https://drive.google.com/uc?export=download&id=1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx',
+    evening_rainy: 'https://drive.google.com/uc?export=download&id=1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh',
+    evening_snowy: 'https://drive.google.com/uc?export=download&id=11VMURVAnxLWm9JY0sgPu60RsC6h1oaZx',
     
     // Night videos
-    night_clear: 'https://drive.google.com/file/d/1Bz72n-TvOIj3IP0r4_K6hy7ERJ7vD2MN/view?usp=sharing',
-    night_cloudy: 'https://drive.google.com/file/d/1vneX93jUo4Lq4aZikCiJq3wDp805pqgO/view?usp=sharing',
-    night_rainy: 'https://drive.google.com/file/d/1MaL8u-FTdC8D7EtbJ1kXukPqsjP9tYNU/view?usp=sharing',
-    night_snowy: 'https://drive.google.com/file/d/1dnc8qnneh7_iGzrBcy2jcsxl4u_h8f22/view?usp=sharing',
+    night_clear: 'https://drive.google.com/uc?export=download&id=1Bz72n-TvOIj3IP0r4_K6hy7ERJ7vD2MN',
+    night_cloudy: 'https://drive.google.com/uc?export=download&id=1vneX93jUo4Lq4aZikCiJq3wDp805pqgO',
+    night_rainy: 'https://drive.google.com/uc?export=download&id=1MaL8u-FTdC8D7EtbJ1kXukPqsjP9tYNU',
+    night_snowy: 'https://drive.google.com/uc?export=download&id=1dnc8qnneh7_iGzrBcy2jcsxl4u_h8f22',
     
     // Default fallback
-    default: 'https://drive.google.com/file/d/1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx/view?usp=sharing'
+    default: 'https://drive.google.com/uc?export=download&id=1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx'
 };
 
 // Messages based on conditions
