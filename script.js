@@ -7,31 +7,31 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'videos/forest-sunrise.mp4',
-    morning_cloudy: 'videos/cloudy-morning.mp4',
-    morning_rainy: 'videos/rainy-morning.mp4',
-    morning_snowy: 'videos/snowy-sunrise.mp4',
+    morning_sunny: 'https://drive.google.com/file/d/1wGAVXfow-zXFyLKPbxPKSXDi-3SP_cg4/view?usp=drive_link',
+    morning_cloudy: 'https://drive.google.com/file/d/1Z3-2p9KbKw2iPLJi7T3PKG5JSJBrE5vg/view?usp=drive_link',
+    morning_rainy: 'https://drive.google.com/file/d/1noGOtZlgU7d3DGZIQSwzRiMi_hmCXKrK/view?usp=drive_link',
+    morning_snowy: 'https://drive.google.com/file/d/1cGNDZW2r-2hORZ65GzQLXSb2ppM1z2uk/view?usp=sharing',
     
     // Afternoon videos
-    afternoon_sunny: 'videos/windy-field.mp4',
-    afternoon_cloudy: 'videos/windy-meadow.mp4',
-    afternoon_rainy: 'videos/rainy-day.mp4',
-    afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
+    afternoon_sunny: 'https://drive.google.com/file/d/1i00yAH291BF-wVUp6TiBzfV5KTn-uhTo/view?usp=sharing',
+    afternoon_cloudy: 'https://drive.google.com/file/d/1cO_PFfdC5v80JvNBgweTLbsnvoQU3-hm/view?usp=drive_link',
+    afternoon_rainy: 'https://drive.google.com/file/d/1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh/view?usp=drive_link',
+    afternoon_snowy: 'https://drive.google.com/file/d/15VnUL6khqD6xnCY28mFjp_hbpxBLcPW3/view?usp=drive_link',
     
     // Evening videos
-    evening_sunny: 'videos/sunny-forest.mp4',
-    evening_cloudy: 'videos/Sunset-Beach.mp4',
-    evening_rainy: 'videos/rainy-day.mp4',
-    evening_snowy: 'videos/snowy-sunset.mp4',
+    evening_sunny: 'https://drive.google.com/file/d/1NZgtU63BHG6WO8g2Jh_qX2ZrGw3FQwUC/view?usp=drive_link',
+    evening_cloudy: 'https://drive.google.com/file/d/1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx/view?usp=sharing',
+    evening_rainy: 'https://drive.google.com/file/d/1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh/view?usp=sharing',
+    evening_snowy: 'https://drive.google.com/file/d/11VMURVAnxLWm9JY0sgPu60RsC6h1oaZx/view?usp=sharing',
     
     // Night videos
-    night_clear: 'videos/clear-night.mp4',
-    night_cloudy: 'videos/cloudy-night.mp4',
-    night_rainy: 'videos/rainy-night.mp4',
-    night_snowy: 'videos/snowy-night.mp4',
+    night_clear: 'https://drive.google.com/file/d/1Bz72n-TvOIj3IP0r4_K6hy7ERJ7vD2MN/view?usp=sharing',
+    night_cloudy: 'https://drive.google.com/file/d/1vneX93jUo4Lq4aZikCiJq3wDp805pqgO/view?usp=sharing',
+    night_rainy: 'https://drive.google.com/file/d/1MaL8u-FTdC8D7EtbJ1kXukPqsjP9tYNU/view?usp=sharing',
+    night_snowy: 'https://drive.google.com/file/d/1dnc8qnneh7_iGzrBcy2jcsxl4u_h8f22/view?usp=sharing',
     
     // Default fallback
-    default: 'videos/Sunset-Beach.mp4'
+    default: 'https://drive.google.com/file/d/1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx/view?usp=sharing'
 };
 
 // Messages based on conditions
