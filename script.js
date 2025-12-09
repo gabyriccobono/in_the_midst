@@ -7,28 +7,28 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'videos/Sunset-Beach.mp4',
+    morning_sunny: 'videos/forest-sunrise.mp4',
     morning_cloudy: 'https://example.com/videos/morning-cloudy.mp4',
     morning_rainy: 'https://example.com/videos/morning-rainy.mp4',
     morning_snowy: 'https://example.com/videos/morning-snowy.mp4',
     
     // Afternoon videos
-    afternoon_sunny: 'https://example.com/videos/afternoon-sunny.mp4',
+    afternoon_sunny: 'videos/Sunny-forest.mp4',
     afternoon_cloudy: 'https://example.com/videos/afternoon-cloudy.mp4',
-    afternoon_rainy: 'https://example.com/videos/afternoon-rainy.mp4',
+    afternoon_rainy: 'videos/rainy-day.mp4',
     afternoon_snowy: 'https://example.com/videos/afternoon-snowy.mp4',
     
     // Evening videos
-    evening_sunny: 'https://example.com/videos/evening-sunny.mp4',
-    evening_cloudy: 'https://example.com/videos/evening-cloudy.mp4',
-    evening_rainy: 'https://example.com/videos/evening-rainy.mp4',
-    evening_snowy: 'https://example.com/videos/evening-snowy.mp4',
+    evening_sunny: 'videos/windy-meadow.mp4',
+    evening_cloudy: 'videos/Sunset-Beach.mp4',
+    evening_rainy: 'videos/Sunset-Beach.mp4',
+    evening_snowy: 'videos/Cloud-snow-walk.mp4',
     
     // Night videos
     night_clear: 'videos/Sunset-Beach.mp4',
-    night_cloudy: 'https://example.com/videos/night-cloudy.mp4',
-    night_rainy: 'https://example.com/videos/night-rainy.mp4',
-    night_snowy: 'https://example.com/videos/night-snowy.mp4',
+    night_cloudy: 'videos/Sunset-Beach.mp4',
+    night_rainy: 'videos/rainy night.mp4',
+    night_snowy: 'videos/snowy-night.mp4',
     
     // Default fallback
     default: 'videos/Sunset-Beach.mp4'
