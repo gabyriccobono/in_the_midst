@@ -136,10 +136,15 @@ async function getWeather(lat, lon) {
 
 // Get a Date object for the location's local time using the timezone offset (seconds)
 function getLocalDate() {
+    const now = Date.now();
+    // Browser's local offset in minutes; convert to seconds and invert sign to match API style
+    const localOffsetSec = -new Date().getTimezoneOffset() * 60;
     if (typeof currentTimezoneOffsetSec === 'number') {
-        return new Date(Date.now() + currentTimezoneOffsetSec * 1000);
+        // Adjust from the browser's timezone to the target timezone
+        const deltaSec = currentTimezoneOffsetSec - localOffsetSec;
+        return new Date(now + deltaSec * 1000);
     }
-    return new Date();
+    return new Date(now);
 }
 
 // Determine time of day
@@ -252,7 +257,14 @@ function formatWeather(weatherMain) {
         'Snow': 'Snowy',
         'Thunderstorm': 'Stormy',
         'Mist': 'Misty',
-        'Fog': 'Foggy'
+        'Fog': 'Foggy',
+        'Haze': 'Haze',
+        'Smoke': 'Cloudy',
+        'Dust': 'Dusty',
+        'Sand': 'Sandy',
+        'Ash': 'Ash',
+        'Squall': 'Windy',
+        'Tornado': 'Windy'
     };
     
     if (weatherMain === 'Clear' && timeOfDay === 'night') {
@@ -276,6 +288,20 @@ function leaveWebsite() {
         // document.getElementById('mainMessage').querySelector('h1').textContent = 'Go outside and be present.';
     }
 }
+
+// Auto-unmute video on load (may still require user gesture on some browsers)
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('backgroundVideo');
+    if (video) {
+        video.muted = false;
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(err => {
+                console.warn('Autoplay with sound was blocked; user interaction needed.', err);
+            });
+        }
+    }
+});
 
 // Handle YouTube video conversion
 // If you have YouTube links, you can use a service like youtube-dl or convert them to MP4
