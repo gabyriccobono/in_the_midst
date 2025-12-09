@@ -1,13 +1,13 @@
 // Configuration
 // IMPORTANT: Replace with your OpenWeatherMap API key (free at openweathermap.org/api)
-const WEATHER_API_KEY = 'YOUR_API_KEY_HERE';
+const WEATHER_API_KEY = 'c25e6231fb9dc36d9005eb3f8491eb0f';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
 // Video URLs - Replace these with your YouTube links or MP4 file paths
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'https://example.com/videos/morning-sunny.mp4',
+    morning_sunny: 'videos/Sunset-Beach.mp4',
     morning_cloudy: 'https://example.com/videos/morning-cloudy.mp4',
     morning_rainy: 'https://example.com/videos/morning-rainy.mp4',
     morning_snowy: 'https://example.com/videos/morning-snowy.mp4',
@@ -25,13 +25,13 @@ const VIDEO_LIBRARY = {
     evening_snowy: 'https://example.com/videos/evening-snowy.mp4',
     
     // Night videos
-    night_clear: 'https://example.com/videos/night-clear.mp4',
+    night_clear: 'videos/Sunset-Beach.mp4',
     night_cloudy: 'https://example.com/videos/night-cloudy.mp4',
     night_rainy: 'https://example.com/videos/night-rainy.mp4',
     night_snowy: 'https://example.com/videos/night-snowy.mp4',
     
     // Default fallback
-    default: 'https://example.com/videos/default.mp4'
+    default: 'videos/Sunset-Beach.mp4'
 };
 
 // Messages based on conditions
