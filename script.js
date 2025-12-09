@@ -7,13 +7,13 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'https://drive.google.com/uc?export=download&id=1wGAVXfow-zXFyLKPbxPKSXDi-3SP_cg4',
+    morning_sunny: 'videos/forest-sunrise.mp4',
     morning_cloudy: 'https://drive.google.com/uc?export=download&id=1Z3-2p9KbKw2iPLJi7T3PKG5JSJBrE5vg',
     morning_rainy: 'https://drive.google.com/uc?export=download&id=1noGOtZlgU7d3DGZIQSwzRiMi_hmCXKrK',
     morning_snowy: 'https://drive.google.com/uc?export=download&id=1cGNDZW2r-2hORZ65GzQLXSb2ppM1z2uk',
     
     // Afternoon videos
-    afternoon_sunny: 'https://drive.google.com/uc?export=download&id=1i00yAH291BF-wVUp6TiBzfV5KTn-uhTo',
+    afternoon_sunny: 'videos/windy-meadow.mp4',
     afternoon_cloudy: 'https://drive.google.com/uc?export=download&id=1cO_PFfdC5v80JvNBgweTLbsnvoQU3-hm',
     afternoon_rainy: 'https://drive.google.com/uc?export=download&id=1d2oz3FihDwJpdDEWl-PmO4wsiDfBu6gh',
     afternoon_snowy: 'https://drive.google.com/uc?export=download&id=15VnUL6khqD6xnCY28mFjp_hbpxBLcPW3',
@@ -31,7 +31,7 @@ const VIDEO_LIBRARY = {
     night_snowy: 'https://drive.google.com/uc?export=download&id=1dnc8qnneh7_iGzrBcy2jcsxl4u_h8f22',
     
     // Default fallback
-    default: 'https://drive.google.com/uc?export=download&id=1LKmTNuEcpUx7FqQwnP08Mw7Jt0WVfjCx'
+    default: 'videos/windy-meadow.mp4'
 };
 
 // Messages based on conditions
