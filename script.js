@@ -1,40 +1,30 @@
-// Configuration
-// IMPORTANT: Replace with your OpenWeatherMap API key (free at openweathermap.org/api)
 const WEATHER_API_KEY = 'c25e6231fb9dc36d9005eb3f8491eb0f';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
-// Video URLs - Replace these with your YouTube links or MP4 file paths
-// You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
-    // Morning videos
     morning_sunny: 'videos/forest-sunrise.mp4',
     morning_cloudy: 'videos/cloudy-morning.mp4',
     morning_rainy: 'videos/rainy-morning.mp4',
     morning_snowy: 'videos/snowy-sunrise.mp4',
     
-    // Afternoon videos
     afternoon_sunny: 'videos/Sunny-forest.mp4',
     afternoon_cloudy: 'videos/.mp4',
     afternoon_rainy: 'videos/rainy-day.mp4',
     afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
-    
-    // Evening videos
+
     evening_sunny: 'videos/windy-meadow.mp4',
     evening_cloudy: 'videos/Sunset-Beach.mp4',
     evening_rainy: 'videos/Sunset-Beach.mp4',
     evening_snowy: 'videos/snowy-sunset.mp4',
-    
-    // Night videos
+
     night_clear: 'videos/clear-night.mp4',
     night_cloudy: 'videos/cloudy-night.mp4',
     night_rainy: 'videos/rainy night.mp4',
     night_snowy: 'videos/snowy-night.mp4',
     
-    // Default fallback
     default: 'videos/Sunset-Beach.mp4'
 };
 
-// Messages based on conditions
 const MESSAGES = {
     morning_sunny: 'Breaking news: sunlight is a free mood enhancer',
     morning_cloudy: "Perfect day to pretend you're in a romance film, go outside to find love",
@@ -59,7 +49,6 @@ const MESSAGES = {
     default: "Go check what makes today's sky different than yesterday's"
 };
 
-// State
 let currentLocation = null;
 let currentWeather = null;
 let currentTimeOfDay = null;
