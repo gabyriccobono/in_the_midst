@@ -7,7 +7,7 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 // You can organize videos by: timeOfDay (morning, afternoon, evening, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Morning videos
-    morning_sunny: 'videos/windy-meadow.mp4',
+    morning_sunny: 'videos/forest-sunrise.mp4',
     morning_cloudy: 'https://drive.google.com/uc?export=download&id=1Z3-2p9KbKw2iPLJi7T3PKG5JSJBrE5vg',
     morning_rainy: 'https://drive.google.com/uc?export=download&id=1noGOtZlgU7d3DGZIQSwzRiMi_hmCXKrK',
     morning_snowy: 'https://drive.google.com/uc?export=download&id=1cGNDZW2r-2hORZ65GzQLXSb2ppM1z2uk',
