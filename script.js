@@ -8,25 +8,25 @@ const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 const VIDEO_LIBRARY = {
     // Morning videos
     morning_sunny: 'videos/forest-sunrise.mp4',
-    morning_cloudy: 'https://example.com/videos/morning-cloudy.mp4',
-    morning_rainy: 'https://example.com/videos/morning-rainy.mp4',
-    morning_snowy: 'https://example.com/videos/morning-snowy.mp4',
+    morning_cloudy: 'videos/cloudy-morning.mp4',
+    morning_rainy: 'videos/rainy-morning.mp4',
+    morning_snowy: 'videos/snowy-sunrise.mp4',
     
     // Afternoon videos
     afternoon_sunny: 'videos/Sunny-forest.mp4',
-    afternoon_cloudy: 'https://example.com/videos/afternoon-cloudy.mp4',
+    afternoon_cloudy: 'videos/.mp4',
     afternoon_rainy: 'videos/rainy-day.mp4',
-    afternoon_snowy: 'https://example.com/videos/afternoon-snowy.mp4',
+    afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
     
     // Evening videos
     evening_sunny: 'videos/windy-meadow.mp4',
     evening_cloudy: 'videos/Sunset-Beach.mp4',
     evening_rainy: 'videos/Sunset-Beach.mp4',
-    evening_snowy: 'videos/Cloud-snow-walk.mp4',
+    evening_snowy: 'videos/snowy-sunset.mp4',
     
     // Night videos
-    night_clear: 'videos/Sunset-Beach.mp4',
-    night_cloudy: 'videos/Sunset-Beach.mp4',
+    night_clear: 'videos/clear-night.mp4',
+    night_cloudy: 'videos/cloudy-night.mp4',
     night_rainy: 'videos/rainy night.mp4',
     night_snowy: 'videos/snowy-night.mp4',
     
@@ -36,27 +36,27 @@ const VIDEO_LIBRARY = {
 
 // Messages based on conditions
 const MESSAGES = {
-    morning_sunny: 'The morning sun invites you to step outside',
-    morning_cloudy: 'A gentle morning awaits beyond your screen',
-    morning_rainy: 'The rain calls you to feel its touch',
-    morning_snowy: 'Fresh snow blankets the world outside',
+    morning_sunny: 'Breaking news: sunlight is a free mood enhancer',
+    morning_cloudy: "Perfect day to pretend you're in a romance film, go outside to find love",
+    morning_rainy: 'Even the weather is thinking you should take it easy today',
+    morning_snowy: "The snowflakes won't be captured through your camera, go use your eyes",
     
-    afternoon_sunny: 'The afternoon light beckons you outdoors',
-    afternoon_cloudy: 'Nature waits for you in the afternoon breeze',
-    afternoon_rainy: 'The rain refreshes everything around you',
-    afternoon_snowy: 'The world is quiet and white outside',
+    afternoon_sunny: "The chaos can wait, the sun won't",
+    afternoon_cloudy: 'Perfect hour for reflection or a dramatic walk',
+    afternoon_rainy: 'It is always acceptable to dance in the rain',
+    afternoon_snowy: 'Go outside and let the cold bully you into feeling alive',
     
-    evening_sunny: 'The evening sky paints colors just for you',
-    evening_cloudy: 'Dusk settles gently, calling you outside',
-    evening_rainy: 'Evening rain creates a peaceful rhythm',
-    evening_snowy: 'The evening snow glows in the twilight',
+    evening_sunny: 'Perfect moment to go touch grass and reboot',
+    evening_cloudy: 'Time to avoid the evening slump and reconnect with nature',
+    evening_rainy: '',
+    evening_snowy: 'If you are mad at the cold,',
     
-    night_clear: 'The stars are waiting for you to look up',
-    night_cloudy: 'The night holds mysteries beyond your screen',
-    night_rainy: 'Listen to the night rain from your window',
-    night_snowy: 'The night snow sparkles under the moon',
+    night_clear: 'When was the last time you went stargazing?',
+    night_cloudy: 'Can you notice the moon under the clouds? Can you smell the night?',
+    night_rainy: 'Nature is giving you a meditation soundtrack for a reason',
+    night_snowy: 'Night snow is the closest you will get to time stopping',
     
-    default: 'Step outside and breathe'
+    default: "Go check what makes today's sky different than yesterday's"
 };
 
 // State
