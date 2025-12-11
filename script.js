@@ -13,22 +13,22 @@ const VIDEO_LIBRARY = {
     sunrise_snowy: 'videos/snowy-sunrise.mp4',
     
     // Morning videos (7 AM - 12 PM)
-    morning_sunny: 'videos/forest-sunrise.mp4',
+    morning_sunny: 'videos/sunny-morning.mp4',
     morning_cloudy: 'videos/cloudy-morning.mp4',
     morning_rainy: 'videos/rainy-morning.mp4',
     morning_snowy: 'videos/snowy-sunrise.mp4',
     
     // Afternoon videos (12 PM - 5 PM)
-    afternoon_sunny: 'videos/windy-field.mp4',
-    afternoon_cloudy: 'videos/windy-meadow.mp4',
+    afternoon_sunny: 'videos/afternoon-sunny.mp4',
+    afternoon_cloudy: 'videos/.mp4',
     afternoon_rainy: 'videos/rainy-day.mp4',
-    afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
+    afternoon_snowy: 'videos/cloudy-snowy-afternoon.mp4',
     
     // Sunset videos (5 PM - 7 PM)
-    sunset_sunny: 'videos/sunny-forest.mp4',
+    sunset_sunny: 'videos/.mp4',
     sunset_cloudy: 'videos/Sunset-Beach.mp4',
     sunset_rainy: 'videos/rainy-day.mp4',
-    sunset_snowy: 'videos/snowy-sunset.mp4',
+    sunset_snowy: 'videos/sunset-snow-drive.mp4',
     
     // Night videos (7 PM - 5 AM)
     night_clear: 'videos/clear-night.mp4',
