@@ -1,131 +1,43 @@
 // Configuration
+// IMPORTANT: Replace with your OpenWeatherMap API key (free at openweathermap.org/api)
 const WEATHER_API_KEY = 'c25e6231fb9dc36d9005eb3f8491eb0f';
 const WEATHER_API_URL = 'https://api.openweathermap.org/data/2.5/weather';
 
-// YouTube Video Library
-// INSTRUCTIONS: Replace 'YOUR_VIDEO_ID' with your actual YouTube video IDs
-// To get the ID: Upload video to YouTube as "Unlisted", then copy the ID from the URL
-// Example: https://www.youtube.com/watch?v=dQw4w9WgXcQ -> ID is "dQw4w9WgXcQ"
-// 
-// start: time in seconds where you want the video to start playing
-// end: time in seconds where you want the video to stop (optional - leave blank to play full video)
+// Video URLs - Replace these with your YouTube links or MP4 file paths
+// You can organize videos by: timeOfDay (sunrise, morning, afternoon, sunset, night) and weather (sunny, rainy, cloudy, snowy)
 const VIDEO_LIBRARY = {
     // Sunrise videos (5 AM - 7 AM)
-    sunrise_sunny: { 
-        id: 'sA90VcBSHmw',
-        start: 1,
-        end: null  // null means play until the end
-    },
-    sunrise_cloudy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    sunrise_rainy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    sunrise_snowy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
+    sunrise_sunny: 'videos/forest-sunrise.mp4',
+    sunrise_cloudy: 'videos/cloudy-morning.mp4',
+    sunrise_rainy: 'videos/rainy-morning.mp4',
+    sunrise_snowy: 'videos/snowy-sunrise.mp4',
     
     // Morning videos (7 AM - 12 PM)
-    morning_sunny: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    morning_cloudy: { 
-        id: 'ns8H-eI5-UA',
-        start: 0,
-        end: null
-    },
-    morning_rainy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    morning_snowy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
+    morning_sunny: 'videos/forest-sunrise.mp4',
+    morning_cloudy: 'videos/cloudy-morning.mp4',
+    morning_rainy: 'videos/rainy-morning.mp4',
+    morning_snowy: 'videos/snowy-sunrise.mp4',
     
     // Afternoon videos (12 PM - 5 PM)
-    afternoon_sunny: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    afternoon_cloudy: { 
-        id: 'tNvbc3ensqM',
-        start: 0,
-        end: null
-    },
-    afternoon_rainy: { 
-        id: 'ek656V25dJg',
-        start: 0,
-        end: null
-    },
-    afternoon_snowy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
+    afternoon_sunny: 'videos/windy-field.mp4',
+    afternoon_cloudy: 'videos/windy-meadow.mp4',
+    afternoon_rainy: 'videos/rainy-day.mp4',
+    afternoon_snowy: 'videos/cloudy-snow-walk.mp4',
     
     // Sunset videos (5 PM - 7 PM)
-    sunset_sunny: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    sunset_cloudy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    sunset_rainy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    sunset_snowy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
+    sunset_sunny: 'videos/sunny-forest.mp4',
+    sunset_cloudy: 'videos/Sunset-Beach.mp4',
+    sunset_rainy: 'videos/rainy-day.mp4',
+    sunset_snowy: 'videos/snowy-sunset.mp4',
     
     // Night videos (7 PM - 5 AM)
-    night_clear: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    night_cloudy: { 
-        id: 'I-u52_csCvA',
-        start: 0,
-        end: null
-    },
-    night_rainy: { 
-        id: 'YOUR_VIDEO_ID',
-        start: 0,
-        end: null
-    },
-    night_snowy: { 
-        id: 'fyNGfXjGiO4',
-        start: 0,
-        end: null
-    },
+    night_clear: 'videos/clear-night.mp4',
+    night_cloudy: 'videos/cloudy-night.mp4',
+    night_rainy: 'videos/rainy-night.mp4',
+    night_snowy: 'videos/snowy-night.mp4',
     
     // Default fallback
-    default: { 
-        id: 'sA90VcBSHmw',
-        start: 1,
-        end: null
-    }
+    default: 'videos/Sunset-Beach.mp4'
 };
 
 // Messages based on conditions
@@ -163,29 +75,13 @@ let currentLocation = null;
 let currentWeather = null;
 let currentTimeOfDay = null;
 let currentTimezoneOffsetSec = null;
-let player = null;
-let currentVideoKey = null;
-let isYouTubeAPIReady = false;
 
-// Load YouTube IFrame API
-let tag = document.createElement('script');
-tag.src = "https://www.youtube.com/iframe_api";
-let firstScriptTag = document.getElementsByTagName('script')[0];
-firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-
-// This function is called automatically when YouTube API is ready
-function onYouTubeIframeAPIReady() {
-    console.log('YouTube API Ready');
-    isYouTubeAPIReady = true;
-    initializeApp();
-}
-
-// Initialize app
-function initializeApp() {
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
     updateTime();
     setInterval(updateTime, 1000);
     getLocation();
-}
+});
 
 // Get user's location
 function getLocation() {
@@ -200,12 +96,14 @@ function getLocation() {
             },
             error => {
                 console.error('Error getting location:', error);
+                // Fallback to default location (New York)
                 currentLocation = { lat: 40.7128, lon: -74.0060 };
                 getWeather(currentLocation.lat, currentLocation.lon);
             }
         );
     } else {
         console.error('Geolocation is not supported');
+        // Fallback
         currentLocation = { lat: 40.7128, lon: -74.0060 };
         getWeather(currentLocation.lat, currentLocation.lon);
     }
@@ -213,6 +111,14 @@ function getLocation() {
 
 // Get weather data
 async function getWeather(lat, lon) {
+    if (WEATHER_API_KEY === 'YOUR_API_KEY_HERE') {
+        console.warn('Please add your OpenWeatherMap API key in script.js');
+        // Use mock data for development
+        currentWeather = { main: 'Clear', name: 'Unknown' };
+        updateContent();
+        return;
+    }
+
     try {
         const response = await fetch(
             `${WEATHER_API_URL}?lat=${lat}&lon=${lon}&appid=${WEATHER_API_KEY}&units=metric`
@@ -226,28 +132,33 @@ async function getWeather(lat, lon) {
                 name: data.name,
                 country: data.sys.country
             };
-            currentTimezoneOffsetSec = data.timezone ?? 0;
+            currentTimezoneOffsetSec = data.timezone ?? 0; // seconds offset from UTC
             updateContent();
         } else {
             throw new Error('Weather API error');
         }
     } catch (error) {
         console.error('Error fetching weather:', error);
+        // Fallback
         currentWeather = { main: 'Clear', name: 'Unknown' };
         updateContent();
     }
 }
 
+// Get a Date object for the location's local time using the timezone offset (seconds)
 function getLocalDate() {
     const now = Date.now();
+    // Browser's local offset in minutes; convert to seconds and invert sign to match API style
     const localOffsetSec = -new Date().getTimezoneOffset() * 60;
     if (typeof currentTimezoneOffsetSec === 'number') {
+        // Adjust from the browser's timezone to the target timezone
         const deltaSec = currentTimezoneOffsetSec - localOffsetSec;
         return new Date(now + deltaSec * 1000);
     }
     return new Date(now);
 }
 
+// Determine time of day - UPDATED to include sunrise and sunset
 function getTimeOfDay() {
     const localDate = getLocalDate();
     const hour = localDate.getHours();
@@ -265,6 +176,7 @@ function getTimeOfDay() {
     }
 }
 
+// Map weather condition to simple category
 function getWeatherCategory(weatherMain) {
     const weather = weatherMain.toLowerCase();
     
@@ -279,10 +191,12 @@ function getWeatherCategory(weatherMain) {
     }
 }
 
+// Update video and message based on conditions
 function updateContent() {
     currentTimeOfDay = getTimeOfDay();
     
     if (!currentWeather) {
+        // Use default if weather not loaded yet
         setVideoAndMessage('default', 'default');
         return;
     }
@@ -290,6 +204,7 @@ function updateContent() {
     const weatherCategory = getWeatherCategory(currentWeather.main);
     const key = `${currentTimeOfDay}_${weatherCategory}`;
     
+    // Special case for night - use 'clear' instead of 'sunny'
     const videoKey = (currentTimeOfDay === 'night' && weatherCategory === 'sunny') 
         ? `${currentTimeOfDay}_clear` 
         : key;
@@ -297,101 +212,29 @@ function updateContent() {
     setVideoAndMessage(videoKey, key);
 }
 
+// Set video source and message
 function setVideoAndMessage(videoKey, messageKey) {
+    const video = document.getElementById('backgroundVideo');
     const messageElement = document.getElementById('mainMessage');
-    const videoData = VIDEO_LIBRARY[videoKey] || VIDEO_LIBRARY.default;
     
-    // Only update video if it changed
-    if (currentVideoKey !== videoKey && isYouTubeAPIReady) {
-        currentVideoKey = videoKey;
-        loadYouTubeVideo(videoData);
+    // Get video URL
+    const videoUrl = VIDEO_LIBRARY[videoKey] || VIDEO_LIBRARY.default;
+    
+    // Update video
+    if (video.src !== videoUrl) {
+        video.src = videoUrl;
+        video.load();
+        video.play().catch(error => {
+            console.error('Error playing video:', error);
+        });
     }
     
     // Update message
     const message = MESSAGES[messageKey] || MESSAGES.default;
-    if (messageElement) {
-        messageElement.querySelector('h1').textContent = message;
-    }
+    messageElement.querySelector('h1').textContent = message;
 }
 
-function loadYouTubeVideo(videoData) {
-    const container = document.getElementById('backgroundVideo');
-    
-    if (!container) {
-        console.error('Video container not found');
-        return;
-    }
-    
-    // Destroy existing player if any
-    if (player) {
-        player.destroy();
-    }
-    
-    // Clear container
-    container.innerHTML = '';
-    
-    // Create new div for YouTube player
-    const playerDiv = document.createElement('div');
-    playerDiv.id = 'ytplayer';
-    container.appendChild(playerDiv);
-    
-    // Build player parameters
-    const playerVars = {
-        autoplay: 1,
-        controls: 0,
-        disablekb: 1,
-        fs: 0,
-        modestbranding: 1,
-        playsinline: 1,
-        rel: 0,
-        showinfo: 0,
-        iv_load_policy: 3,
-        cc_load_policy: 0,
-        loop: 1,
-        playlist: videoData.id,
-        start: videoData.start || 0,
-        mute: 0,
-        enablejsapi: 1
-    };
-    
-    // Only add end parameter if it exists
-    if (videoData.end) {
-        playerVars.end = videoData.end;
-    }
-    
-    // Create new player
-    player = new YT.Player('ytplayer', {
-        videoId: videoData.id,
-        playerVars: playerVars,
-        events: {
-            onReady: onPlayerReady,
-            onStateChange: onPlayerStateChange,
-            onError: onPlayerError
-        }
-    });
-}
-
-function onPlayerReady(event) {
-    console.log('Player ready');
-    event.target.playVideo();
-}
-
-function onPlayerStateChange(event) {
-    // If video ended, restart from beginning
-    if (event.data === YT.PlayerState.ENDED) {
-        const videoData = VIDEO_LIBRARY[currentVideoKey];
-        if (videoData) {
-            player.seekTo(videoData.start || 0);
-            player.playVideo();
-        }
-    }
-}
-
-function onPlayerError(event) {
-    console.error('YouTube player error:', event.data);
-    console.log('Error codes: 2=Invalid ID, 5=HTML5 error, 100=Video not found, 101/150=Embed disabled');
-}
-
+// Update time display
 function updateTime() {
     const now = getLocalDate();
     const timeString = now.toLocaleTimeString('en-US', { 
@@ -399,32 +242,24 @@ function updateTime() {
         minute: '2-digit',
         hour12: true 
     });
+    document.getElementById('timeDisplay').textContent = timeString;
     
-    const timeDisplay = document.getElementById('timeDisplay');
-    if (timeDisplay) {
-        timeDisplay.textContent = timeString;
-    }
-    
+    // Update city and weather if available
     if (currentWeather) {
-        const cityDisplay = document.getElementById('cityDisplay');
-        const weatherDisplay = document.getElementById('weatherDisplay');
+        document.getElementById('cityDisplay').textContent = currentWeather.name || 'Unknown';
         
-        if (cityDisplay) {
-            cityDisplay.textContent = currentWeather.name || 'Unknown';
-        }
-        
-        if (weatherDisplay) {
-            const weatherText = formatWeather(currentWeather.main);
-            weatherDisplay.textContent = weatherText;
-        }
+        const weatherText = formatWeather(currentWeather.main);
+        document.getElementById('weatherDisplay').textContent = weatherText;
     }
     
+    // Check if time of day changed and update content
     const newTimeOfDay = getTimeOfDay();
     if (newTimeOfDay !== currentTimeOfDay) {
         updateContent();
     }
 }
 
+// Format weather for display
 function formatWeather(weatherMain) {
     const timeOfDay = getTimeOfDay();
     const weatherMap = {
@@ -451,13 +286,32 @@ function formatWeather(weatherMain) {
     return weatherMap[weatherMain] || weatherMain;
 }
 
+// Leave website function
 function leaveWebsite() {
+    // You can customize this to redirect to a specific URL or close the window
     if (confirm('Are you ready to disconnect and step outside?')) {
+        // Option 1: Close the window/tab
         window.close();
+        
+        // Option 2: Redirect to a specific URL (uncomment and modify as needed)
+        // window.location.href = 'https://example.com';
+        
+        // Option 3: Just hide the button and show a message
+        // document.getElementById('leaveButton').style.display = 'none';
+        // document.getElementById('mainMessage').querySelector('h1').textContent = 'Go outside and be present.';
     }
 }
 
-// If YouTube API is already loaded when this script runs
-if (window.YT && window.YT.Player) {
-    onYouTubeIframeAPIReady();
-}
+// Auto-unmute video on load (may still require user gesture on some browsers)
+document.addEventListener('DOMContentLoaded', () => {
+    const video = document.getElementById('backgroundVideo');
+    if (video) {
+        video.muted = false;
+        const playPromise = video.play();
+        if (playPromise && typeof playPromise.catch === 'function') {
+            playPromise.catch(err => {
+                console.warn('Autoplay with sound was blocked; user interaction needed.', err);
+            });
+        }
+    }
+});
